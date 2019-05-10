@@ -3,7 +3,7 @@ import './App.css';
 import {randomAttributes, convertToScale} from './utils/utilities';
 import Input from './components/Input';
 import Attributes from './components/Attributes';
-import { thisExpression } from '@babel/types';
+import axios from 'axios';
 
 class App extends React.Component{
   constructor(){
@@ -28,6 +28,7 @@ class App extends React.Component{
           text={this.state.inputText} 
           handleChange={this._setText}
           handleClick={this._generateAttributes}  
+          // handleClick={this._axiosAttributes}  
           setScore={this._setScore} 
         />
         {this.state.emotionalScore? <Attributes emotionalScore={this.state.emotionalScore} attributes={this.state.attributes} /> : null}
@@ -43,15 +44,31 @@ class App extends React.Component{
       this._setScore()
     })
   }
-  // _axiosAttributes = async () =>{
-  //   const attributes = await axios()
-  //   this.setState({
-  //     attributes : {...attributes}
-  //   },
-  //   () => {
-  //     this._setScore()
-  //   })
-  // }
+  _axiosAttributes = async () =>{
+    const body = {
+      "user_id": "e660e712",
+      "user_key": "ab3e4bdf-0b3d-4112-bcab-ae05112caceb",
+      "text": `${this.state.text}`
+    }
+    const attributes = await axios({
+      method: 'post',
+      url: 'https://my-little-cors-proxy.herokuapp.com/https://api.codeq.com/v1',
+      data: JSON.stringify(body)
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+    this.setState({
+      attributes : {
+        "emotions": [attributes.data.sentences[0].emotions[0]],
+        "sentiments": [attributes.data.sentences[0].sentiments[0]]
+      }
+    },
+    () => {
+      console.log(this.state.attributes);
+      this._setScore()
+    })
+  }
   _setScore = () => {
     const emotionalScore = convertToScale(this.state.attributes).toString()
 
