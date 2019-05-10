@@ -1,10 +1,15 @@
 import React from 'react';
-function Input({handleClick, setScore}){
+function Input({text, handleChange, handleClick}){
     return(
         <div>
-            <input placeholder="blah">
+            
 
-            </input>
+            <input 
+            value={text}
+            onChange={(e) => {
+                handleChange(e.target.value);
+            }}
+            />
             <button onClick={() => {
                 return (
                     handleClick() 
