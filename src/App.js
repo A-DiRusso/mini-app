@@ -1,28 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import {randomAttributes} from './utils/utilities';
+import Input from './components/Input';
+import Attributes from './components/Attributes';
 
-function App() {
-  console.log(randomAttributes());
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component{
+  constructor(){
+    super();
+    this.state = {
+      attributes : null
+    };
+  }
+  render() {
+    console.log("I did a render.");
+    return (
+      <div className="App">
+        <Input handleClick={this._generateAttributes} />
+        {this.state.attributes? <Attributes attributes={this.state.attributes} /> : null}
+        {/* <Attributes attributes={this.state.attributes} /> */}
+      </div>
+    );
+  }
+  _generateAttributes = () => {
+    const attributes = randomAttributes()
+    this.setState({
+      attributes : {...attributes}
+    }) 
+  }
 }
 
 export default App;
