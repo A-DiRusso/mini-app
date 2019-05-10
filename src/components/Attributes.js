@@ -1,13 +1,13 @@
 import React from 'react';
 
-function Attributes({attributes, emotionalScore}){
+function Attributes({attributes, emotionalScore, styles}){
     emotionalScore = parseFloat(emotionalScore);
     return(
     <div>
-        <h2>Attributes: </h2>
-        <h3>{attributes.emotions}</h3>
-        <h3>{attributes.sentiments}</h3>
-        <h4>{emotionalScore}</h4>
+        <h2 style={styles}>Attributes: </h2>
+        <h3 style={styles}>{attributes.emotions}</h3>
+        <h3 style={styles}>{attributes.sentiments}</h3>
+        <h4 style={styles}>{emotionalScore}</h4>
     </div>
     )
 }

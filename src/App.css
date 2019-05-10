@@ -23,6 +23,21 @@
   color: #61dafb;
 }
 
+button {
+  background-color: #FF08FF;
+  color: white;
+}
+
+button:hover{
+  background-color: #FF080F;
+  font-weight: bold
+}
+
+h2, h3, h4 {
+  color: white;
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

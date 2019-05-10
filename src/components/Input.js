@@ -1,5 +1,5 @@
 import React from 'react';
-function Input({text, handleChange, handleClick}){
+function Input({text, handleChange, handleClick, styleInputs}){
     return(
         <div>
             
@@ -10,12 +10,12 @@ function Input({text, handleChange, handleClick}){
                 handleChange(e.target.value);
             }}
             />
-            <button onClick={() => {
+            <button style={styleInputs} onClick={() => {
                 return (
                     handleClick() 
                     // setScore()
                 )}}>
-                Some text
+                Submit
             </button>
         </div>
     )
