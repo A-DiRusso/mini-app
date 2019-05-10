@@ -1,11 +1,15 @@
 import React from 'react';
-function Input({handleClick}){
+function Input({handleClick, setScore}){
     return(
         <div>
-            <input>
+            <input placeholder="blah">
 
             </input>
-            <button onClick={() => handleClick()}>
+            <button onClick={() => {
+                return (
+                    handleClick() 
+                    // setScore()
+                )}}>
                 Some text
             </button>
         </div>
