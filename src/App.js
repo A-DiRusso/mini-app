@@ -8,13 +8,21 @@ class App extends React.Component{
   constructor(){
     super();
     this.state = {
+      inputText : '',
       attributes : null,
       emotionalScore : 0
     };
   }
   render() {
+    const colorTheory = {
+      "-1" : "blue",
+      "0" : "yellow",
+      "1" : "red",
+    };
+
+    const styles = {backgroundColor : colorTheory[this.state.emotionalScore]};
     return (
-      <div className="App">
+      <div style={styles} className="App">
         <Input handleClick={this._generateAttributes} setScore={this._setScore} />
         {this.state.emotionalScore? <Attributes emotionalScore={this.state.emotionalScore} attributes={this.state.attributes} /> : null}
       </div>
@@ -30,7 +38,8 @@ class App extends React.Component{
     })
   }
   _setScore = () => {
-    const emotionalScore = convertToScale(this.state.attributes)
+    const emotionalScore = convertToScale(this.state.attributes).toString()
+
     this.setState({
       emotionalScore
     })
