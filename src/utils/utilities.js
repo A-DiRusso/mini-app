@@ -36,7 +36,7 @@ export function convertToScale({sentiments,emotions}){
         "Suprise": 0.25,
         "Excitement": 1,
         "Angst": 0.3,
-        "No Emotion": 0
+        "No emotion": 0
     };
     const sentimentScale = {
         "Negative": -1,
