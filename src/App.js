@@ -5,6 +5,7 @@ import Input from './components/Input';
 import Attributes from './components/Attributes';
 import axios from 'axios';
 import invert from 'invert-color';
+import LittleDude from './components/LittleDude';
 
 class App extends React.Component{
   constructor(props){
@@ -102,31 +103,36 @@ class App extends React.Component{
     };
     // this.styleAttributes = {color: invert(colorTheory[this.state.emotionalScore])};
     // this.styleInputs = {color: (colorTheory[this.state.emotionalScore]), backgroundColor: invert(colorTheory[this.state.emotionalScore])};
-    this.styleAttributes = {color: "#FFD207"};
-    this.stylesInputs = {backgroundColor : colorTheory[this.state.emotionalScore], height: "100%"};
-    {this.state.emotionalScore 
-      ? 
-        document.body.style.backgroundColor = colorTheory[this.state.emotionalScore] 
-      : 
-        document.body.style.backgroundColor = "white";}
+    // this.styleAttributes = {color: "#FFD207"};
+    // this.stylesInputs = {backgroundColor : colorTheory[this.state.emotionalScore], height: "100%"};
+    // {this.state.emotionalScore 
+    //   ? 
+    //     document.body.style.backgroundColor = colorTheory[this.state.emotionalScore] 
+    //   : 
+    //     document.body.style.backgroundColor = "white";}
     // document.body.style.backgroundColor = colorTheory[this.state.emotionalScore];
     return (
       <div className="App">
         <Input
-          styleInputs={this.styleInputs}
+          // styleInputs={this.styleInputs}
           text={this.state.inputText} 
           handleChange={this._setText}
-          // handleClick={this._generateAttributes}  
-          handleClick={this._axiosAttributes}  
+          handleClick={this._generateAttributes}  
+          // handleClick={this._axiosAttributes}  
           setScore={this._setScore} 
         />
         {this.state.emotionalScore
           ? 
-            <Attributes 
-            emotionalScore={this.state.emotionalScore} 
-            styles={this.styleAttributes} 
-            attributes={this.state.attributes} 
-            /> 
+            <div>
+              <Attributes 
+                emotionalScore={this.state.emotionalScore} 
+                // styles={this.styleAttributes} 
+                attributes={this.state.attributes} 
+              /> 
+              <LittleDude 
+                emotionalScore={this.state.emotionalScore} 
+              />
+            </div>
           : 
             null
         }
@@ -156,9 +162,10 @@ class App extends React.Component{
     .catch(function (error) {
       console.log(error);
     })
+    [attributes.data.sentences[0].emotions[0]] === "No Emotion" ? console.log("fuck") : null;
     this.setState({
       attributes : {
-        "emotions": [attributes.data.sentences[0].emotions[0]],
+        "emotions": [attributes.data.sentences[0].emotions[0]] || "No emotion",
         "sentiments": [attributes.data.sentences[0].sentiments[0]]
       }
     },
@@ -168,6 +175,7 @@ class App extends React.Component{
     })
   }
   _setScore = () => {
+    console.log(this.state.attributes);
     const emotionalScore = convertToScale(this.state.attributes).toString()
 
     this.setState({
