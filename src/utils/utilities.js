@@ -36,6 +36,7 @@ export function convertToScale({sentiments,emotions}){
         "Suprise": 0.25,
         "Excitement": 1,
         "Angst": 0.3,
+        "No emotion": 0,
         "No Emotion": 0
     };
     const sentimentScale = {
@@ -47,10 +48,16 @@ export function convertToScale({sentiments,emotions}){
     if(((emotions==="Suprise")||(emotions==="Excitement"))&&(sentiments==="Negative")){
         qualtitativeValue = emotionScale[emotions] * - 1;
     }
+    else if ((emotions==="Fear")&&(sentiments!=="Positive")){
+        qualtitativeValue = emotionScale[emotions] * - 1;
+    }
     else if (sentiments==="Neutral"){
         qualtitativeValue = emotionScale[emotions];
         if (emotionScale[emotions]===0){
             qualtitativeValue = "0";
+        }
+        if ((emotions==="Anger")||(emotions==="Fear")||(emotions==="Disgust/Dislike")){
+            qualtitativeValue = emotionScale[emotions] * - 1;
         }
     }
     else{

@@ -1,7 +1,50 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-items: center;
+}
+html {
+  background-color: #F8A410 !important;
 }
 
+
+.hidden-text{
+  display: none;
+}
+.micstandall{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.micstandall{
+  color: white;
+}
+.micstand{
+  height: 2rem;
+  width: 2rem;
+  border: 3px white solid;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+
+
+.pictureframe{
+  float: left;
+  height: 200px;
+  width: 200px !important;
+}
+.pictureframe img{
+  height:100%;
+  border-radius: 500px;
+}
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
