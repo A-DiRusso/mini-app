@@ -7,8 +7,35 @@
   justify-items: center;
 }
 html {
-  /* background-color: #F8A410; */
+  background-color: #F8A410 !important;
 }
+
+
+.hidden-text{
+  display: none;
+}
+.micstandall{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.micstandall{
+  color: white;
+}
+.micstand{
+  height: 2rem;
+  width: 2rem;
+  border: 3px white solid;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+
+
 .pictureframe{
   float: left;
   height: 200px;

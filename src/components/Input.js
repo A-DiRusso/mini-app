@@ -5,7 +5,7 @@ function Input({text, handleChange, handleClick, styleInputs}){
         <div>
             <input style={styleHidden} id="subscriptionKey" type="text" value="3661985bbd5846aa9458b415d245168e" />
             <input style={styleHidden} id="serviceRegion" type="text" value="westus" />
-            <i id="startRecognizeOnceAsyncButton" className="fas fa-microphone-alt"></i>
+            {/* <i id="startRecognizeOnceAsyncButton" className="fas fa-microphone-alt"></i> */}
             <input 
                 id="phraseDiv"
                 value={text}
