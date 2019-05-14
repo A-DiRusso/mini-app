@@ -6,7 +6,7 @@ import Attributes from './components/Attributes';
 import axios from 'axios';
 // import invert from 'invert-color';
 import LittleDude from './components/LittleDude';
-import Speech from './components/Speech';
+// import Speech from './components/Speech';
 import annyang from "annyang";
 import Mic from './components/Mic';
 import Info from './components/Info';
@@ -41,32 +41,36 @@ class App extends React.Component{
 
   render() {
     const styles = this.state.text ? {color:'white'} : {transform: `scale(2)`};
+    const styles2 = this.state.showInfo ? {opacity:'1', width:'200px'} : {opacity: '0', width:'200px'};
+    
     return (
       <div className="App">
-        <Speech />
+       
         <Mic setText={this._setText} doThisNext={this._axiosAttributes} style={styles} />
         <br />
         <br />
         {this.state.emotionalScore
           ? 
             <>
-              <div>
-              {this.state.showInfo? 
-                < Info
-                  whatYouHadSaid={this.state.text}            
-                  emotionalScore={this.state.emotionalScore} 
-                  attributes={this.state.attributes} 
-                  styles={this.styleAttributes} 
-                /> 
-              : 
+              <div style={{ display : 'flex', flexDirection : 'row'}}>
+                  {/* <div style={styles2}> */}
+                  
+                  < Info
+                    whatYouHadSaid={this.state.text}            
+                    emotionalScore={this.state.emotionalScore} 
+                    attributes={this.state.attributes} 
+                    styles2={styles2} 
+                  /> 
+                {/* </div> */}
+              
                 <LittleDude 
                   emotionalScore={this.state.emotionalScore} 
                 />
-              }
+              
               </div>
               <Attributes 
                 emotionalScore={this.state.emotionalScore} 
-                // styles={this.styleAttributes} 
+                // styles={styles2} 
                 attributes={this.state.attributes} 
                 infoClick={this._showInfo}
               /> 

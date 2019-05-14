@@ -46,7 +46,14 @@ html {
   align-items: center;
   margin-top: 20%;
 }
-
+.code-yellow {
+  opacity: 0;
+}
+.bigdiv {
+  /* display: inline-block; */
+  display: flex;
+  flex-direction: column;
+}
 .pictureframe{
   float: left;
   height: 200px;
@@ -61,7 +68,14 @@ html {
   height: 40vmin;
   pointer-events: none;
 }
-
+.textgroup {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  font: italic 34rem sans-serif;
+  text-align: center;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
