@@ -9,6 +9,7 @@ import LittleDude from './components/LittleDude';
 import Speech from './components/Speech';
 import annyang from "annyang";
 import Mic from './components/Mic';
+import Info from './components/Info';
 
 // window.addEventListener("onchange", ()=> {console.log('Look ma, I changed!')})
 
@@ -18,7 +19,8 @@ class App extends React.Component{
     this.state = {
       text : '',
       attributes : null,
-      emotionalScore : 0
+      emotionalScore : 0,
+      showInfo : false
     };
   }
 
@@ -38,24 +40,37 @@ class App extends React.Component{
 
 
   render() {
+    const styles = this.state.text ? {color:'white'} : {transform: `scale(2)`};
     return (
       <div className="App">
         <Speech />
-        <Mic setText={this._setText} doThisNext={this._axiosAttributes} />
+        <Mic setText={this._setText} doThisNext={this._axiosAttributes} style={styles} />
         <br />
         <br />
         {this.state.emotionalScore
           ? 
-            <div>
+            <>
+              <div>
+              {this.state.showInfo? 
+                < Info
+                  whatYouHadSaid={this.state.text}            
+                  emotionalScore={this.state.emotionalScore} 
+                  attributes={this.state.attributes} 
+                  styles={this.styleAttributes} 
+                /> 
+              : 
+                <LittleDude 
+                  emotionalScore={this.state.emotionalScore} 
+                />
+              }
+              </div>
               <Attributes 
                 emotionalScore={this.state.emotionalScore} 
                 // styles={this.styleAttributes} 
                 attributes={this.state.attributes} 
+                infoClick={this._showInfo}
               /> 
-              <LittleDude 
-                emotionalScore={this.state.emotionalScore} 
-              />
-            </div>
+            </>
           : 
             null
         }
@@ -109,6 +124,11 @@ class App extends React.Component{
     const emotionalScore = convertToScale(this.state.attributes).toString()
     this.setState({
       emotionalScore
+    })
+  }
+  _showInfo = () => {
+    this.setState({
+      showInfo : !this.state.showInfo
     })
   }
 }

@@ -1,10 +1,11 @@
 .App {
+  height: 100vh;
   text-align: center;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   align-content: center;
-  justify-items: center;
+  justify-content: space-evenly;
 }
 html {
   background-color: #F8A410 !important;
@@ -13,6 +14,9 @@ html {
 
 .hidden-text{
   display: none;
+}
+.micstandall-first{
+  transform: scale(2);
 }
 .micstandall{
   display: flex;
@@ -30,11 +34,18 @@ html {
   border-radius: 50px;
   display: flex;
   flex-direction: column;
-  align-content: center;
+  align-content:   center;
   justify-content: center;
 }
 
-
+.attributes-all{
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20%;
+}
 
 .pictureframe{
   float: left;

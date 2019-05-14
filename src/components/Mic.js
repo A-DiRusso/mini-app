@@ -1,11 +1,13 @@
 import React from 'react';
 import annyang from "annyang";
 
-function Mic({setText}){
+function Mic({setText, style}){
     return(
-        <div className="micstandall" onMouseOver={() => showMeTheMoney()}>
+        <div className="micstandall" 
+        // onMouseOver={() => showMeTheMoney()}
+        >
             <div >
-            <div className="micstand" onClick={()=>{ talkToMe()}} >
+            <div style={style} className="micstand" onClick={()=>{ talkToMe()}} >
             <i id="startRecognizeOnceAsyncButton" className="fas fa-microphone-alt mic"></i>
             </div>
             </div>
